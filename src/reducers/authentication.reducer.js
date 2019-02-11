@@ -15,13 +15,15 @@ export function authentication(state = initialState, action) {
       return {
         ...state,
         loggedIn: true,
+        loggingIn: false,
         user: action.user,
-        error_message: ''
+        error: ''
       };
     case userConstants.LOGIN_FAILURE:
       return {
         ...state,
-        error_message: action.error
+        loggingIn: false,
+        error: action.error
       };
     case userConstants.LOGOUT:
       return {};

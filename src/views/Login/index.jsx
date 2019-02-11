@@ -59,14 +59,11 @@ class Login extends React.Component {
   }
 
   render() {
-    const { classes, loggingIn } = this.props;
-    const  { email, password, submitted, error_message } = this.state;
-    console.log('PROPS');
-    console.dir(this.props);
-    console.log('STATE');
-    console.dir(this.state);
+    const { classes, loggingIn, error } = this.props;
+    const  { email, password, submitted } = this.state;
     return (
       <div className={classes.root}>
+        {error}
         <GridContainer>
           <GridItem xs={8} sm={8} md={8} >
             <Card>
@@ -136,12 +133,14 @@ Login.propTypes = {
 };
 
 function mapStateToProps(state) {
-  const { loggingIn } = state.authentication;
+  const { loggingIn, error } = state.authentication;
   const { email, password } = state;
+  console.dir(state);
   return {
     email,
     password,
-    loggingIn
+    loggingIn,
+    error
   };
 }
 

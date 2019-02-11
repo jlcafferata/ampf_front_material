@@ -10,6 +10,11 @@ import "./assets/css/material-dashboard-react.css?v=1.5.0";
 
 import indexRoutes from "routes/index.jsx";
 
+// setup fake backend
+import { configureFakeBackend } from './helpers';
+configureFakeBackend();
+
+
 const hist = createBrowserHistory();
 
 ReactDOM.render(

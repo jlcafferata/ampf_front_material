@@ -2,6 +2,14 @@
   "name": "material-dashboard-react",
   "version": "1.5.0",
   "description": "Material Dashboard React. Coded by Creative Tim",
+  "proxy": {
+    "/auth/login": {
+      "target": "http://192.168.0.17:8080"
+    },
+    "/auth/register": {
+      "target": "http://192.168.0.17:8080"
+    }
+  },
   "private": false,
   "main": "dist/index.js",
   "dependencies": {
@@ -28,14 +36,14 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
     "lint:check": "eslint . --ext=js,jsx;  exit 0",
     "lint:fix": "eslint . --ext=js,jsx --fix;  exit 0",
-    "build-package": "babel src --out-dir dist"
+    "build-package": "babel src --out-dir dist",
+    "start": "webpack-dev-server --open",
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",

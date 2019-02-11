@@ -33,7 +33,7 @@ function authenticate(data) {
   function success(user) {
     return { type: userConstants.LOGIN_SUCCESS, user };
   }
-  function failure(error) {
+  function failure(error) {    
     return { type: userConstants.LOGIN_FAILURE, error };
   }
 }

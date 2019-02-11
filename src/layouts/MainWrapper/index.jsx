@@ -37,9 +37,9 @@ class App extends React.Component {
     };
     this.resizeFunction = this.resizeFunction.bind(this);
   }
-  /*handleDrawerToggle = () => {
+  handleDrawerToggle = () => {
     this.setState({ mobileOpen: !this.state.mobileOpen });
-  }*/
+  }
   getRoute() {
     console.log('this.props.location.pathname: ' + this.props.location.pathname);
     return this.props.location.pathname !== "/maps";

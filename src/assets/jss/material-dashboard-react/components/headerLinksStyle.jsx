@@ -98,14 +98,23 @@ const headerLinksStyle = theme => ({
     [theme.breakpoints.down("sm")]: {
       width: "100%"
     },
-    display: "inline-block"
+    display: "inline-block",
+    position: "relative"
   },
   searchWrapper: {
     [theme.breakpoints.down("sm")]: {
       width: "-webkit-fill-available",
       margin: "10px 15px 0"
     },
-    display: "inline-block"
+    display: "inline-block",
+    position: "relative"
+  },
+  userEmail: {
+    fontSize: "10px",
+    position: "relative",
+    background: "snow none repeat scroll 0 0",
+    borderRadius: "15px",    
+    padding: "5px"    
   }
 });
 

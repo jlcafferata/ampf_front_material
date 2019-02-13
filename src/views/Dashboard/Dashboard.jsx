@@ -72,7 +72,7 @@ class Dashboard extends React.Component {
                   <Danger>
                     <Warning />
                   </Danger>
-                  <a href="#pablo" onClick={e => e.preventDefault()}>
+                  <a href="#Jose" onClick={e => e.preventDefault()}>
                     Get more space
                   </a>
                 </div>

@@ -1,19 +1,30 @@
 import { successColor } from "assets/jss/material-dashboard-react.jsx";
 
 const dashboardStyle = {
+  buttonBottomBar: {
+    padding:"10px",
+    float: "right"
+  },
+  logo:{
+    height:"50px",
+    width:"28%"
+  },
   helpBlock: {
     color:"red"
   },
   formControlGroup:{
-    left: "25%",
-    position: "relative"  
+    left: "20%",
+    position: "relative",
+    padding:  "8px"    
   },
   formControl:{
       borderRadius: "5px",
       color: "#000000",
       margin: "2px",
       fontSize: "12px",
-      padding: "3px"          
+      padding: "3px",
+      marginTop: "8px",
+      marginLeft: "8px"
   },
   successText: {
     color: successColor

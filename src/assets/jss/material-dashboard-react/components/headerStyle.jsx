@@ -32,8 +32,8 @@ const headerStyle = theme => ({
     minHeight: "50px"
   },
   flex: {
-    flex: 1
-  },
+    width: "calc(85%)"
+  },  
   title: {
     ...defaultFont,
     lineHeight: "30px",

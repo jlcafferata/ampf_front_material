@@ -15,56 +15,64 @@ import Typography from "views/Typography/Typography.jsx";
 import Icons from "views/Icons/Icons.jsx";
 import Maps from "views/Maps/Maps.jsx";
 import NotificationsPage from "views/Notifications/Notifications.jsx";
+import Dashboard from "views/Dashboard/Dashboard.jsx";
 
 const dashboardRoutes = [
   {
     path: "/login",
     sidebarName: "Login",
-    navbarName: "Login de usuario",
+    navbarName: "Principal",
     icon: AccountBox,
     component: LoginPage
   },
   {
     path: "/user",
-    //sidebarName: "User Profile",
+    sidebarName: "User Profile",
     navbarName: "Profile",
     icon: Person,
     component: UserProfile
   },
   {
     path: "/table",
-    //sidebarName: "Table List",
+    sidebarName: "Table List",
     navbarName: "Table List",
     icon: "content_paste",
     component: TableList
   },
   {
     path: "/typography",
-    //sidebarName: "Typography",
+    sidebarName: "Typography",
     navbarName: "Typography",
     icon: LibraryBooks,
     component: Typography
   },
   {
     path: "/icons",
-    //sidebarName: "Icons",
+    sidebarName: "Icons",
     navbarName: "Icons",
     icon: BubbleChart,
     component: Icons
   },
   {
     path: "/maps",
-    //sidebarName: "Maps",
+    sidebarName: "Maps",
     navbarName: "Map",
     icon: LocationOn,
     component: Maps
   },
   {
     path: "/notifications",
-    //sidebarName: "Notifications",
+    sidebarName: "Notifications",
     navbarName: "Notifications",
     icon: Notifications,
     component: NotificationsPage
+  },
+  {
+    path: "/dashboard",
+    sidebarName: "Dashboard",
+    navbarName: "Dashboard",
+    icon: Notifications,
+    component: Dashboard
   },
   { redirect: true, path: "/", to: "/login", navbarName: "Redirect" }
 ];

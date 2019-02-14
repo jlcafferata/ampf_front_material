@@ -1,23 +1,28 @@
 import Icon from "@material-ui/core/Icon";
 // @material-ui/core
 import withStyles from "@material-ui/core/styles/withStyles";
-import LocalOffer from "@material-ui/icons/LocalOffer";
+import PowerOff from "@material-ui/icons/PowerOff";
+import PermIdentity from "@material-ui/icons/PermIdentity";
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 import Card from "components/Card/Card.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardIcon from "components/Card/CardIcon.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
+import GridItem from "components/Grid/GridItem.jsx";
+
 // core components
-import { Link } from "react-router-dom";
+import { Link, withRouter  } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import GridItem from "components/Grid/GridItem.jsx";
+
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
 
 import { userActions } from "../../actions";
+
+import logo from "../../assets/img/logoAmpf.png";
 
 class Login extends React.Component {
   state = {
@@ -48,6 +53,11 @@ class Login extends React.Component {
     }
   };
 
+  //ponerlo atendiendo los
+  /*if(submitted && !error){
+    this.props.history.push("/user");
+  } */
+
   handleSubmit(e) {
     e.preventDefault();
     this.setState({ submitted: true });
@@ -58,25 +68,32 @@ class Login extends React.Component {
     }
   }
 
+  componentWillReceiveProps(){
+    if(this.props.token && !this.props.error){
+      this.props.history.push("/user");
+    }
+  }
+
   render() {
-    const { classes, loggingIn, error } = this.props;
+    const { classes, loggingIn, error} = this.props;
     const  { email, password, submitted } = this.state;
     return (
       <div className={classes.root}>
-        {error}
         <GridContainer>
           <GridItem xs={8} sm={8} md={8} >
             <Card>
               <CardHeader color="danger" stats icon>
                 <CardIcon color="danger">
-                  <Icon>lock</Icon>
+                  <Icon>lock</Icon>   
                 </CardIcon>
+                <img alt="AMPF" src={logo} className={classes.logo}/>
                 <Grid  container spacing={24}>
                 <form method="POST" onSubmit={this.handleSubmit} className={classes.formControlGroup}>
                   <Grid item xs={12}>
                   <label>Email:</label> 
                   <input type="email" 
                     name="email"
+                    size="40"
                     className={classes.formControl}                     
                     onChange={this.handleChange}/>  
                     {submitted &&
@@ -89,6 +106,7 @@ class Login extends React.Component {
                     <input type="password"
                     className={classes.formControl}
                     name="password"
+                    size="40"
                     onChange={this.handleChange}
                     />
                      {submitted &&
@@ -98,26 +116,33 @@ class Login extends React.Component {
                   </Grid>
                   <Grid item xs={12}>
                     <Button type="submit" color="default" className={classes.button}>
-                      Login
+                      Aceptar
                     </Button>
                     {loggingIn && (
                       <img alt="logging" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                     )}
                   </Grid>
+                  {error && (
+                    <div className={classes.helpBlock}>{error}</div>
+                  )}
                   </form>
                 </Grid>
                 
               </CardHeader>
               <CardFooter stats>
-                <div className={classes.stats}>
-                  <LocalOffer />
-                  Recordar password
-                </div>
-                <div className={classes.stats}>
-                  <LocalOffer />
-                  <Link to="/register" className="btn btn-link">
-                      Registrar
-                  </Link>
+                <div style={{width:"100%"}}> 
+                  <div className={classes.buttonBottomBar}>
+                    <PowerOff />
+                    <Link to="/remember">
+                      Olvidaste tu constrase&ntilde;a?
+                    </Link>
+                  </div>
+                  <div className={classes.buttonBottomBar}>
+                    <PermIdentity />
+                    <Link to="/register" >
+                       Registrar
+                    </Link>
+                  </div>
                 </div>
               </CardFooter>
             </Card>
@@ -133,18 +158,22 @@ Login.propTypes = {
 };
 
 function mapStateToProps(state) {
-  const { loggingIn, error } = state.authentication;
+  const { loggingIn, error, user } = state.authentication;
   const { email, password } = state;
-  console.dir(state);
+  let token='';
+  if(user){
+    token=user.token;
+  }  
   return {
     email,
     password,
     loggingIn,
-    error
+    error,
+    token
   };
 }
 
 export default connect(
   mapStateToProps,
   null
-)(withStyles(dashboardStyle)(Login));
+)(withRouter(withStyles(dashboardStyle)(Login)));

@@ -16,8 +16,10 @@ import dashboardRoutes from "routes/dashboard.jsx";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx";
 
-import image from "assets/img/sidebar-2.jpg";
-import logo from "assets/img/logo-1.png";
+import { connect } from "react-redux";
+
+
+import logo from "assets/img/logoAmpf.png";
 
 const switchRoutes = (
   <Switch>
@@ -40,10 +42,11 @@ class App extends React.Component {
   handleDrawerToggle = () => {
     this.setState({ mobileOpen: !this.state.mobileOpen });
   }
+
   getRoute() {
-    console.log('this.props.location.pathname: ' + this.props.location.pathname);
-    return this.props.location.pathname !== "/maps";
+    return(this.props.loggedIn && this.props.location.pathname === "/login");
   }
+
   resizeFunction() {
     if (window.innerWidth >= 960) {
       this.setState({ mobileOpen: false });
@@ -67,34 +70,37 @@ class App extends React.Component {
     window.removeEventListener("resize", this.resizeFunction);
   }
   render() {
-    const { classes, ...rest } = this.props;
+    const { classes, error, token, loggedIn, ...rest} = this.props;
     return (
       <div className={classes.wrapper}>
-        <Sidebar
-          routes={dashboardRoutes}
-          logoText={"Ampf"}
-          logo={logo}
-          //image={image}
-          handleDrawerToggle={this.handleDrawerToggle}
-          open={this.state.mobileOpen}
-          color="red"
-          {...rest}
-        />
+        {loggedIn && (
+          <Sidebar
+            routes={dashboardRoutes}
+            logoText={"Ampf"}
+            logo={logo}
+            //image={image}
+            handleDrawerToggle={this.handleDrawerToggle}
+            open={this.state.mobileOpen}
+            color="red"
+            {...rest}
+          />)}
         <div className={classes.mainPanel} ref="mainPanel">
-          <Header
+          {loggedIn && (<Header
             routes={dashboardRoutes}
             handleDrawerToggle={this.handleDrawerToggle}
             {...rest}
-          />
+          />)}
           {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
-          {this.getRoute() ? (
+          {this.getRoute() ? 
+            (<div className={classes.content}>
+              <div className={classes.container}></div>
+            </div>):
+            (
             <div className={classes.content}>
               <div className={classes.container}>{switchRoutes}</div>
             </div>
-          ) : (
-            <div className={classes.map}>{switchRoutes}</div>
           )}
-          {this.getRoute() ? <Footer /> : null}
+          {loggedIn && (<Footer />)}
         </div>
       </div>
     );
@@ -105,4 +111,22 @@ App.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(dashboardStyle)(App);
+
+function mapStateToProps(state) {
+  const { loggedIn, user, error} = state.authentication;
+  let token='';
+  if(user){
+    token=user.token;
+  }  
+  return {
+    loggedIn,
+    user,
+    error,
+    token
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(withStyles(dashboardStyle)(App));

@@ -1,9 +1,11 @@
-//import config from "config";
+import config from "config";
 import { authHeader } from "../helpers";
 
-const config = {
-  apiUrl: "http://192.168.0.17:8080"
-};
+/*const config = {
+  //apiUrl: "http://192.168.0.17:8080"
+  apiUrl: "http://34.230.28.215"
+};*/
+
 export const userService = {
   login,
   logout,

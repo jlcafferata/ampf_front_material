@@ -39,6 +39,7 @@ var config = {
         port: 3000,
         historyApiFallback: true       
     },
+    apiUrl: "http://34.230.28.215",
     externals: {
         // global app config object
         config: JSON.stringify({

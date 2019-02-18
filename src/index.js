@@ -4,11 +4,11 @@ import { createBrowserHistory } from "history";
 import { Router, Route, Switch } from "react-router-dom";
 
 import { Provider } from "react-redux";
-import { store } from "./helpers";
+import { store } from "./helpers/index.js";
 
 import "./assets/css/material-dashboard-react.css?v=1.5.0";
 
-import indexRoutes from "routes/index.jsx";
+import indexRoutes from "./routes/index.jsx";
 
 // setup fake backend
 /*import { configureFakeBackend } from './helpers';

@@ -3,13 +3,13 @@ import Icon from "@material-ui/core/Icon";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PowerOff from "@material-ui/icons/PowerOff";
 import PermIdentity from "@material-ui/icons/PermIdentity";
-import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
-import Card from "components/Card/Card.jsx";
-import CardFooter from "components/Card/CardFooter.jsx";
-import CardHeader from "components/Card/CardHeader.jsx";
-import CardIcon from "components/Card/CardIcon.jsx";
-import GridContainer from "components/Grid/GridContainer.jsx";
-import GridItem from "components/Grid/GridItem.jsx";
+import dashboardStyle from "../../assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
+import Card from "../../components/Card/Card.jsx";
+import CardFooter from "../../components/Card/CardFooter.jsx";
+import CardHeader from "../../components/Card/CardHeader.jsx";
+import CardIcon from "../../components/Card/CardIcon.jsx";
+import GridContainer from "../../components/Grid/GridContainer.jsx";
+import GridItem from "../../components/Grid/GridItem.jsx";
 
 // core components
 import { Link, withRouter  } from "react-router-dom";

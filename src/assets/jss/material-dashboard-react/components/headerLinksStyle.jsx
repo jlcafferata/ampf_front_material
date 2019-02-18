@@ -112,8 +112,7 @@ const headerLinksStyle = theme => ({
   userEmail: {
     fontSize: "10px",
     position: "relative",
-    background: "snow none repeat scroll 0 0",
-    borderRadius: "15px",    
+    background: "#ffffff",    
     padding: "5px"    
   }
 });

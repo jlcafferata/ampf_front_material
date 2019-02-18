@@ -15,16 +15,22 @@ const dashboardStyle = {
   formControlGroup:{
     left: "20%",
     position: "relative",
-    padding:  "8px"    
+    padding: "8px",
+    width: "65%"          
   },
   formControl:{
       borderRadius: "5px",
-      color: "#000000",
-      margin: "2px",
-      fontSize: "12px",
+      color: "#000000",      
+      width: "90%",
+      fontSize: "14px",
       padding: "3px",
-      marginTop: "8px",
-      marginLeft: "8px"
+      verticalAlign: "center"
+  },
+  labelFormControl: {
+    float: "left",
+    marginTop: "10px",
+    marginBottom: "10px"
+
   },
   successText: {
     color: successColor

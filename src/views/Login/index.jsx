@@ -53,11 +53,7 @@ class Login extends React.Component {
     }
   };
 
-  //ponerlo atendiendo los
-  /*if(submitted && !error){
-    this.props.history.push("/user");
-  } */
-
+  
   handleSubmit(e) {
     e.preventDefault();
     this.setState({ submitted: true });
@@ -80,20 +76,20 @@ class Login extends React.Component {
     return (
       <div className={classes.root}>
         <GridContainer>
-          <GridItem xs={8} sm={8} md={8} >
+          <GridItem xs={12} sm={9} md={9} >
             <Card>
               <CardHeader color="danger" stats icon>
-                <CardIcon color="danger">
-                  <Icon>lock</Icon>   
+                <CardIcon color="danger" >
+                  <Icon id="iconoLogin">lock</Icon>                     
                 </CardIcon>
-                <img alt="AMPF" src={logo} className={classes.logo}/>
+                <img src={logo} alt="AMPF"/>
+                <div className={classes}>AMPF</div>
                 <Grid  container spacing={24}>
                 <form method="POST" onSubmit={this.handleSubmit} className={classes.formControlGroup}>
-                  <Grid item xs={12}>
-                  <label>Email:</label> 
+                  <Grid item xs={12} sm={12} md={12}>
+                  <label className={classes.labelFormControl}>Email:</label> 
                   <input type="email" 
                     name="email"
-                    size="40"
                     className={classes.formControl}                     
                     onChange={this.handleChange}/>  
                     {submitted &&
@@ -101,12 +97,11 @@ class Login extends React.Component {
                         <div className={classes.helpBlock}>Email requerido</div>
                       )}  
                   </Grid>
-                  <Grid item xs={12}>
-                    <label>Password:</label> 
+                  <Grid item xs={12} sm={12} md={12}>
+                    <label className={classes.labelFormControl}>Password:</label> 
                     <input type="password"
                     className={classes.formControl}
                     name="password"
-                    size="40"
                     onChange={this.handleChange}
                     />
                      {submitted &&
